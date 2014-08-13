@@ -1,4 +1,4 @@
-/*! checksley - v0.4.0 - 2013-11-07 */
+/*! checksley - v0.6.0 - 2014-08-13 */
 (function() {
   var messages, validators;
 

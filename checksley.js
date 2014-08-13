@@ -1,4 +1,4 @@
-/*! checksley - v0.5.0 - 2013-11-08 */
+/*! checksley - v0.6.0 - 2014-08-13 */
 (function() {
   var Checksley, ComposedField, Field, FieldMultiple, Form, checksley, defaults, formatMessage, messages, toInt, validators, _checksley,
     __hasProp = {}.hasOwnProperty,
@@ -21,6 +21,7 @@
     containerClass: "checksley-error-list",
     containerGlobalSearch: false,
     containerPreferenceSelector: ".errors-box",
+    containerErrorsSelector: "li",
     errors: {
       classHandler: function(element, isRadioOrCheckbox) {
         return element;
@@ -518,12 +519,12 @@
     };
 
     Field.prototype.addError = function(errorElement) {
-      var container;
+      var container, selector;
       container = this.getErrorContainer();
-      if (this.options.errors.onlyOneErrorElement) {
-        container.empty();
+      selector = this.options.containerErrorsSelector;
+      if (!this.options.onlyOneErrorElement || !container.find(selector).length) {
+        return container.append(errorElement);
       }
-      return container.append(errorElement);
     };
 
     Field.prototype.reset = function() {
